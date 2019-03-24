@@ -1,0 +1,10 @@
+{
+  "name": "OTPea",
+  "short_name": "OTPea",
+  "description": "Generate time-based one-time passwords",
+  "lang": "en-GB",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#A5D6A7",
+  "theme_color": "#4CAF50"
+}
