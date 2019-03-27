@@ -7,6 +7,7 @@
   "dependencies": {
     "bulma": "^0.7.4",
     "copy-text-to-clipboard": "^2.0.0",
+    "idb-keyval": "^3.1.0",
     "jsotp": "^1.0.4",
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
@@ -14,7 +15,9 @@
     "react-redux": "^6.0.1",
     "react-scripts": "^2.1.8",
     "redux": "^4.0.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "ric-shim": "^1.0.0",
+    "zip-array": "^1.0.1"
   },
   "devDependencies": {},
   "scripts": {

@@ -1,5 +1,6 @@
+import { get, keys, set } from "idb-keyval";
+import { zip } from "zip-array";
 import { allActions } from "./store/actions";
-import { store } from "./store/store";
 
 /**
  * Return a unique identifier for the current 30-second interval
@@ -12,7 +13,7 @@ let interval;
  * Start dispatching interval change actions at
  * every 0th and 30th second of each minute
  */
-export const startInterval = () => {
+export const startInterval = store => {
   const secondsToNextTick = 30 - (new Date().getSeconds() % 30);
   setTimeout(() => {
     interval = setInterval(() => {
@@ -25,4 +26,29 @@ export const startInterval = () => {
 
 export const stopInterval = () => {
   clearInterval(interval);
+};
+
+export const saveState = async (key, value) => {
+  try {
+    return set(key, {
+      timestamp: Date.now(),
+      version: 1,
+      data: value
+    });
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
+};
+
+export const loadState = async () => {
+  try {
+    const allKeys = await keys();
+    const allValuePromises = Promise.all(allKeys.map(key => get(key)));
+    const allValues = (await allValuePromises).map(value => value.data);
+    return Object.fromEntries(zip(allKeys, await allValues));
+  } catch (err) {
+    console.log(err);
+    return null;
+  }
 };
