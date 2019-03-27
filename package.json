@@ -2,7 +2,11 @@
   "name": "otpea",
   "version": "1.0.0",
   "description": "",
-  "keywords": [],
+  "keywords": [
+    "otp",
+    "totp",
+    "time-based"
+  ],
   "main": "src/index.js",
   "dependencies": {
     "bulma": "^0.7.4",
