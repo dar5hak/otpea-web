@@ -13,13 +13,13 @@ let interval;
  * Start dispatching interval change actions at
  * every 0th and 30th second of each minute
  */
-export const startInterval = store => {
+export const startInterval = dispatch => {
   const secondsToNextTick = 30 - (new Date().getSeconds() % 30);
   setTimeout(() => {
     interval = setInterval(() => {
       const currentInterval = getCurrentIntervalId();
       const action = allActions.changeInterval(currentInterval);
-      store.dispatch(action);
+      dispatch(action);
     }, 30000);
   }, secondsToNextTick * 1000);
 };

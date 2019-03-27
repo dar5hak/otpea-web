@@ -17,6 +17,6 @@ import { startInterval } from "./util.js";
     rootElement
   );
 
-  startInterval(store);
+  startInterval(store.dispatch);
   serviceWorker.register();
 })();
