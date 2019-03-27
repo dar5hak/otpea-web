@@ -15,12 +15,16 @@ let interval;
  */
 export const startInterval = dispatch => {
   const secondsToNextTick = 30 - (new Date().getSeconds() % 30);
+
+  const triggerIntervalChange = () => {
+    const action = allActions.changeInterval(getCurrentIntervalId());
+    dispatch(action);
+  };
+
   setTimeout(() => {
-    interval = setInterval(() => {
-      const currentInterval = getCurrentIntervalId();
-      const action = allActions.changeInterval(currentInterval);
-      dispatch(action);
-    }, 30000);
+    // Dispatch a change the first time, then set an interval
+    triggerIntervalChange();
+    interval = setInterval(triggerIntervalChange, 30000);
   }, secondsToNextTick * 1000);
 };
 
