@@ -1,7 +1,8 @@
 {
   "name": "otpea",
   "version": "1.0.0",
-  "description": "",
+  "description": "Progressive Web App that generates time-based OTPs",
+  "author": "Darshak Parikh",
   "keywords": [
     "otp",
     "totp",
