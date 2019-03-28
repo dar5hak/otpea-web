@@ -4,92 +4,98 @@ import { allActions } from "../store/actions";
 
 const BASE64_REGEX = "[A-Za-z0-9+/]+";
 
-const AccountForm = ({ isVisible, addAccount, cancelAddAccount }) => {
-  let accountName, secret;
+class AccountForm extends React.Component {
+  componentDidUpdate() {
+    this.accountName.focus();
+  }
 
-  return (
-    <div className={isVisible ? "modal is-active" : "modal"}>
-      <div className="modal-background" onClick={cancelAddAccount} />
-      <div className="modal-content">
-        <div className="box">
-          <form
-            autoComplete="off"
-            onSubmit={event => {
-              event.preventDefault();
-              addAccount({
-                name: accountName.value,
-                secret: secret.value
-              });
-              // Clear inputs so that same values aren't pre-filled next time
-              accountName.value = secret.value = "";
-            }}>
-            <div className="field is-horizontal">
-              <div className="field-label is-normal">
-                <label className="label">Name</label>
-              </div>
-              <div className="field-body">
-                <div className="field">
-                  <div className="control">
-                    <input
-                      type="text"
-                      className="input"
-                      name="accountName"
-                      placeholder="GitHub"
-                      required
-                      ref={el => (accountName = el)}
-                    />
+  render() {
+    const { isVisible, addAccount, cancelAddAccount } = this.props;
+
+    return (
+      <div className={isVisible ? "modal is-active" : "modal"}>
+        <div className="modal-background" onClick={cancelAddAccount} />
+        <div className="modal-content">
+          <div className="box">
+            <form
+              autoComplete="off"
+              onSubmit={event => {
+                event.preventDefault();
+                addAccount({
+                  name: this.accountName.value,
+                  secret: this.secret.value
+                });
+                // Clear inputs so that same values aren't pre-filled next time
+                this.accountName.value = this.secret.value = "";
+              }}>
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Name</label>
+                </div>
+                <div className="field-body">
+                  <div className="field">
+                    <div className="control">
+                      <input
+                        type="text"
+                        className="input"
+                        name="accountName"
+                        placeholder="GitHub"
+                        required
+                        ref={el => (this.accountName = el)}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="field is-horizontal">
-              <div className="field-label is-normal">
-                <label className="label">Secret</label>
-              </div>
-              <div className="field-body">
-                <div className="field">
-                  <div className="control">
-                    <input
-                      type="text"
-                      className="input"
-                      name="secret"
-                      pattern={BASE64_REGEX}
-                      placeholder="n34h8yv2n80cxkv1"
-                      required
-                      ref={el => (secret = el)}
-                    />
+              <div className="field is-horizontal">
+                <div className="field-label is-normal">
+                  <label className="label">Secret</label>
+                </div>
+                <div className="field-body">
+                  <div className="field">
+                    <div className="control">
+                      <input
+                        type="text"
+                        className="input"
+                        name="secret"
+                        pattern={BASE64_REGEX}
+                        placeholder="n34h8yv2n80cxkv1"
+                        required
+                        ref={el => (this.secret = el)}
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            <div className="field is-grouped is-grouped-right">
-              <p className="control">
-                <input
-                  type="button"
-                  className="button"
-                  value="Cancel"
-                  onClick={cancelAddAccount}
-                />
-              </p>
-              <p className="control">
-                <input
-                  type="submit"
-                  className="button is-primary"
-                  value="Save"
-                />
-              </p>
-            </div>
-          </form>
+              <div className="field is-grouped is-grouped-right">
+                <p className="control">
+                  <input
+                    type="button"
+                    className="button"
+                    value="Cancel"
+                    onClick={cancelAddAccount}
+                  />
+                </p>
+                <p className="control">
+                  <input
+                    type="submit"
+                    className="button is-primary"
+                    value="Save"
+                  />
+                </p>
+              </div>
+            </form>
+          </div>
         </div>
+        <button
+          className="modal-close is-large"
+          aria-label="close"
+          onClick={cancelAddAccount}
+        />
       </div>
-      <button
-        className="modal-close is-large"
-        aria-label="close"
-        onClick={cancelAddAccount}
-      />
-    </div>
-  );
-};
+    );
+  }
+}
 
 const { addAccount, cancelAddAccount } = allActions;
 
