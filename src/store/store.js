@@ -14,7 +14,12 @@ const reducer = combineReducers({
   ui
 });
 
-const middleware = applyMiddleware(logger, persist);
+const middlewareList = [persist];
+if (process.env.NODE_ENV === "development") {
+  middlewareList.push(logger);
+}
+
+const middleware = applyMiddleware(...middlewareList);
 
 const getStore = async () => {
   try {
