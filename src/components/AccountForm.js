@@ -2,6 +2,8 @@ import React from "react";
 import { connect } from "react-redux";
 import { allActions } from "../store/actions";
 
+const BASE64_REGEX = "[A-Za-z0-9+/]+";
+
 const AccountForm = ({ isVisible, addAccount, cancelAddAccount }) => {
   let accountName, secret;
 
@@ -51,6 +53,7 @@ const AccountForm = ({ isVisible, addAccount, cancelAddAccount }) => {
                       type="text"
                       className="input"
                       name="secret"
+                      pattern={BASE64_REGEX}
                       placeholder="n34h8yv2n80cxkv1"
                       required
                       ref={el => (secret = el)}
