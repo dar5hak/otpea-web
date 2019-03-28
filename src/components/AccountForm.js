@@ -6,7 +6,11 @@ const BASE64_REGEX = "[A-Za-z0-9+/]+";
 
 class AccountForm extends React.Component {
   componentDidUpdate() {
-    this.accountName.focus();
+    if (this.props.isVisible) {
+      // Clear any previous inputs
+      this.accountName.value = this.secret.value = "";
+      this.accountName.focus();
+    }
   }
 
   render() {
@@ -25,8 +29,6 @@ class AccountForm extends React.Component {
                   name: this.accountName.value,
                   secret: this.secret.value
                 });
-                // Clear inputs so that same values aren't pre-filled next time
-                this.accountName.value = this.secret.value = "";
               }}>
               <div className="field is-horizontal">
                 <div className="field-label is-normal">
