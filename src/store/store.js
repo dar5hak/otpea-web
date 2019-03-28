@@ -1,5 +1,5 @@
 import { applyMiddleware, combineReducers, createStore } from "redux";
-import { logger } from "redux-logger";
+import { createLogger } from "redux-logger";
 import { loadState } from "../util";
 import { accounts } from "./accounts.reducer";
 import { persist } from "./persist.middleware";
@@ -16,6 +16,9 @@ const reducer = combineReducers({
 
 const middlewareList = [persist];
 if (process.env.NODE_ENV === "development") {
+  const logger = createLogger({
+    collapsed: (_, action) => action.type === "INTERVAL_CHANGED"
+  });
   middlewareList.push(logger);
 }
 
