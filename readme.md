@@ -3,6 +3,10 @@
 <p align="center">Generate time-based OTPs. Even offline.</p>
 
 <p align="center">
+  <a href="https://otpea.surge.sh" rel="noreferrer noopener">otpea.surge.sh</a>
+</p>
+
+<p align="center">
   <img src="screenshot.png" alt="Screenshot" />
 </p>
 
