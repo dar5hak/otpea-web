@@ -2,7 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 import { allActions } from "../store/actions";
 
-const BASE64_REGEX = "[A-Za-z0-9+/]+";
+const BASE32_REGEX = "[A-Za-z2-7]+";
 
 class AccountForm extends React.Component {
   componentDidUpdate() {
@@ -60,7 +60,7 @@ class AccountForm extends React.Component {
                         type="text"
                         className="input"
                         name="secret"
-                        pattern={BASE64_REGEX}
+                        pattern={BASE32_REGEX}
                         placeholder="n34h8yv2n80cxkv1"
                         required
                         ref={el => (this.secret = el)}
