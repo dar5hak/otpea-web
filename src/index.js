@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { Provider } from "react-redux";
 import App from "./components/App.js";
 import * as serviceWorker from "./serviceWorker";
@@ -8,13 +8,14 @@ import "./styles.sass";
 import { startInterval } from "./util.js";
 
 (async () => {
-  const rootElement = document.getElementById("root");
+  const container = document.getElementById("root");
+  const root = createRoot(container);
   const store = await getStore();
-  render(
+
+  root.render(
     <Provider store={store}>
       <App />
-    </Provider>,
-    rootElement
+    </Provider>
   );
 
   startInterval(store.dispatch);
