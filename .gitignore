@@ -87,3 +87,6 @@ typings/
 
 # Create-React-App build output
 build
+
+# elementary Code temp files
+*~
