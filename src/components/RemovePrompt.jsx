@@ -35,22 +35,6 @@ const RemovePrompt = ({
       onClick={cancelRemoveAccount}
     />
   </div>
-  // <div className="level is-mobile is-pulled-right">
-  //   <div className="level-left" />
-  //   <div className="level-right">
-  //     <span className="level-item">Remove this account?</span>
-  //     <button
-  //       className="level-item button is-small is-bordered"
-  //       onClick={cancelRemoveAccount}>
-  //       No
-  //     </button>
-  //     <button
-  //       className="level-item button is-small is-bordered is-danger"
-  //       onClick={() => removeAccount(accountId)}>
-  //       Yes
-  //     </button>
-  //   </div>
-  // </div>
 );
 
 const { removeAccount, cancelRemoveAccount } = allActions;
