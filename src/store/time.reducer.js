@@ -1,7 +1,7 @@
 import { getCurrentIntervalId } from "../util";
 
 const initialState = {
-  currentInterval: getCurrentIntervalId()
+  currentInterval: getCurrentIntervalId(),
 };
 
 export const time = (state = initialState, { type, payload }) => {

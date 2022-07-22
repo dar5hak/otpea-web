@@ -11,13 +11,13 @@ let store;
 const reducer = combineReducers({
   accounts,
   time,
-  ui
+  ui,
 });
 
 const middlewareList = [persist];
 if (process.env.NODE_ENV === "development") {
   const logger = createLogger({
-    collapsed: (_, action) => action.type === "INTERVAL_CHANGED"
+    collapsed: (_, action) => action.type === "INTERVAL_CHANGED",
   });
   middlewareList.push(logger);
 }

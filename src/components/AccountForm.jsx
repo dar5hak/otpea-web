@@ -23,13 +23,14 @@ class AccountForm extends React.Component {
           <div className="box">
             <form
               autoComplete="off"
-              onSubmit={event => {
+              onSubmit={(event) => {
                 event.preventDefault();
                 addAccount({
                   name: this.accountName.value,
-                  secret: this.secret.value
+                  secret: this.secret.value,
                 });
-              }}>
+              }}
+            >
               <div className="field is-horizontal">
                 <div className="field-label is-normal">
                   <label className="label">Name</label>
@@ -43,7 +44,7 @@ class AccountForm extends React.Component {
                         name="accountName"
                         placeholder="GitHub"
                         required
-                        ref={el => (this.accountName = el)}
+                        ref={(el) => (this.accountName = el)}
                       />
                     </div>
                   </div>
@@ -63,7 +64,7 @@ class AccountForm extends React.Component {
                         pattern={BASE32_REGEX}
                         placeholder="n34h8yv2n80cxkv1"
                         required
-                        ref={el => (this.secret = el)}
+                        ref={(el) => (this.secret = el)}
                       />
                     </div>
                   </div>
@@ -101,7 +102,4 @@ class AccountForm extends React.Component {
 
 const { addAccount, cancelAddAccount } = allActions;
 
-export default connect(
-  null,
-  { addAccount, cancelAddAccount }
-)(AccountForm);
+export default connect(null, { addAccount, cancelAddAccount })(AccountForm);

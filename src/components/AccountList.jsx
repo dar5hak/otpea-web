@@ -6,7 +6,7 @@ import { allActions } from "../store/actions";
 
 const AccountList = ({ accounts, toggleRemoveAccount }) => (
   <main>
-    {accounts.map(account => {
+    {accounts.map((account) => {
       const currentOTP = TOTP(account.secret).now();
       const copyOTP = () => copy(currentOTP);
 
@@ -22,7 +22,8 @@ const AccountList = ({ accounts, toggleRemoveAccount }) => (
               </span>
               <button
                 className="level-item button is-small is-bordered"
-                onClick={copyOTP}>
+                onClick={copyOTP}
+              >
                 Copy
               </button>
               <span
@@ -40,12 +41,9 @@ const AccountList = ({ accounts, toggleRemoveAccount }) => (
 const select = ({ accounts, time, ui }) => ({
   accounts,
   // Not directly used, but forces component to reload when OTP needs to be changed
-  currentInterval: time.currentInterval
+  currentInterval: time.currentInterval,
 });
 
 const { toggleRemoveAccount } = allActions;
 
-export default connect(
-  select,
-  { toggleRemoveAccount }
-)(AccountList);
+export default connect(select, { toggleRemoveAccount })(AccountList);

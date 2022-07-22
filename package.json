@@ -24,13 +24,15 @@
   },
   "devDependencies": {
     "node-sass": "^7.0.1",
+    "prettier": "^2.7.1",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "browserslist": [
     ">0.2%",

@@ -10,7 +10,8 @@ const Empty = () => (
       <a
         href="https://twofactorauth.org/"
         target="_blank"
-        rel="noopener noreferrer">
+        rel="noopener noreferrer"
+      >
         and many more
       </a>
       .

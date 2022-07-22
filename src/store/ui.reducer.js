@@ -1,7 +1,7 @@
 const initialState = {
   addingAccount: false,
   removingAccount: false,
-  accountToBeRemoved: null
+  accountToBeRemoved: null,
 };
 
 export const ui = (state = initialState, { type, payload }) => {
@@ -17,7 +17,7 @@ export const ui = (state = initialState, { type, payload }) => {
     return {
       ...state,
       removingAccount: !state.removingAccount,
-      accountToBeRemoved: payload
+      accountToBeRemoved: payload,
     };
   }
 

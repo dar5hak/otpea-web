@@ -10,7 +10,8 @@ const Header = ({ toggleAddAccount }) => (
     <div className="level-right">
       <button
         className="level-item button is-primary"
-        onClick={toggleAddAccount}>
+        onClick={toggleAddAccount}
+      >
         Add account
       </button>
     </div>
@@ -19,7 +20,4 @@ const Header = ({ toggleAddAccount }) => (
 
 const { toggleAddAccount } = allActions;
 
-export default connect(
-  null,
-  { toggleAddAccount }
-)(Header);
+export default connect(null, { toggleAddAccount })(Header);

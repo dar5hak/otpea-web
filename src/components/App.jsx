@@ -22,10 +22,7 @@ const App = ({ hasAccounts, ui }) => (
 
 const select = ({ accounts, ui }) => ({
   hasAccounts: Boolean(accounts.length),
-  ui
+  ui,
 });
 
-export default connect(
-  select,
-  null
-)(App);
+export default connect(select, null)(App);

@@ -13,7 +13,7 @@ let interval;
  * Start dispatching interval change actions at
  * every 0th and 30th second of each minute
  */
-export const startInterval = dispatch => {
+export const startInterval = (dispatch) => {
   const secondsToNextTick = 30 - (new Date().getSeconds() % 30);
 
   const triggerIntervalChange = () => {
@@ -37,7 +37,7 @@ export const saveState = async (key, value) => {
     return set(key, {
       timestamp: Date.now(),
       version: 1,
-      data: value
+      data: value,
     });
   } catch (err) {
     console.log(err);
@@ -48,8 +48,8 @@ export const saveState = async (key, value) => {
 export const loadState = async () => {
   try {
     const allKeys = await keys();
-    const allValuePromises = Promise.all(allKeys.map(key => get(key)));
-    const allValues = (await allValuePromises).map(value => value.data);
+    const allValuePromises = Promise.all(allKeys.map((key) => get(key)));
+    const allValues = (await allValuePromises).map((value) => value.data);
     return Object.fromEntries(zip(allKeys, await allValues));
   } catch (err) {
     console.log(err);

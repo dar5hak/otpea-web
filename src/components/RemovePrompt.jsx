@@ -6,7 +6,7 @@ const RemovePrompt = ({
   isVisible,
   accountId,
   removeAccount,
-  cancelRemoveAccount
+  cancelRemoveAccount,
 }) => (
   <div className={isVisible ? "modal is-active" : "modal"}>
     <div className="modal-background" onClick={cancelRemoveAccount} />
@@ -22,7 +22,8 @@ const RemovePrompt = ({
           <p className="control">
             <button
               className="level-item button is-danger"
-              onClick={() => removeAccount(accountId)}>
+              onClick={() => removeAccount(accountId)}
+            >
               Remove
             </button>
           </p>
@@ -39,7 +40,6 @@ const RemovePrompt = ({
 
 const { removeAccount, cancelRemoveAccount } = allActions;
 
-export default connect(
-  null,
-  { removeAccount, cancelRemoveAccount }
-)(RemovePrompt);
+export default connect(null, { removeAccount, cancelRemoveAccount })(
+  RemovePrompt
+);

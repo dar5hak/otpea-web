@@ -11,12 +11,12 @@
 import requestIdleCallback from "ric-shim";
 import { saveState } from "../util";
 
-export const persist = store => next => action => {
+export const persist = (store) => (next) => (action) => {
   const result = next(action);
 
   const actionsToPersist = {
     ACCOUNT_ADDED: ["accounts"],
-    ACCOUNT_REMOVED: ["accounts"]
+    ACCOUNT_REMOVED: ["accounts"],
   };
 
   const shouldPersist = actionsToPersist[action.type];
