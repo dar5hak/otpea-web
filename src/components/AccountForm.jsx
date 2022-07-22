@@ -14,11 +14,11 @@ class AccountForm extends React.Component {
   }
 
   render() {
-    const { isVisible, addAccount, cancelAddAccount } = this.props;
+    const { isVisible, addAccount, onClose } = this.props;
 
     return (
       <div className={isVisible ? "modal is-active" : "modal"}>
-        <div className="modal-background" onClick={cancelAddAccount} />
+        <div className="modal-background" onClick={onClose} />
         <div className="modal-content">
           <div className="box">
             <form
@@ -29,6 +29,7 @@ class AccountForm extends React.Component {
                   name: this.accountName.value,
                   secret: this.secret.value,
                 });
+                onClose();
               }}
             >
               <div className="field is-horizontal">
@@ -76,7 +77,7 @@ class AccountForm extends React.Component {
                     type="button"
                     className="button"
                     value="Cancel"
-                    onClick={cancelAddAccount}
+                    onClick={onClose}
                   />
                 </p>
                 <p className="control">
@@ -93,13 +94,13 @@ class AccountForm extends React.Component {
         <button
           className="modal-close is-large"
           aria-label="close"
-          onClick={cancelAddAccount}
+          onClick={onClose}
         />
       </div>
     );
   }
 }
 
-const { addAccount, cancelAddAccount } = allActions;
+const { addAccount } = allActions;
 
-export default connect(null, { addAccount, cancelAddAccount })(AccountForm);
+export default connect(null, { addAccount })(AccountForm);

@@ -4,14 +4,12 @@ import { loadState } from "../util";
 import { accounts } from "./accounts.reducer";
 import { persist } from "./persist.middleware";
 import { time } from "./time.reducer";
-import { ui } from "./ui.reducer";
 
 let store;
 
 const reducer = combineReducers({
   accounts,
   time,
-  ui,
 });
 
 const middlewareList = [persist];
