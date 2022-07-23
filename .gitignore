@@ -85,8 +85,8 @@ typings/
 .dynamodb/
 # ===== End Node.gitignore =====
 
-# Create-React-App build output
-build
+# Vite build output
+dist
 
 # elementary Code temp files
 *~

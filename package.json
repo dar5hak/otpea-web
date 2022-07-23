@@ -19,15 +19,14 @@
     "zip-array": "^1.0.1"
   },
   "devDependencies": {
-    "node-sass": "^7.0.1",
+    "@vitejs/plugin-react": "^2.0.0",
     "prettier": "^2.7.1",
-    "react-scripts": "^5.0.1"
+    "sass": "^1.54.0",
+    "vite": "^3.0.2"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject",
+    "start": "vite",
+    "build": "vite build",
     "format": "prettier --write \"src/**/*.{js,jsx}\""
   },
   "browserslist": [
