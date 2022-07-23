@@ -5,7 +5,6 @@ import App from "./components/App";
 import * as serviceWorker from "./serviceWorker";
 import { getStore } from "./store/store";
 import "./styles.sass";
-import { startInterval } from "./util";
 
 (async () => {
   const container = document.getElementById("root");
@@ -17,8 +16,6 @@ import { startInterval } from "./util";
       <App />
     </Provider>
   );
-
-  startInterval(store.dispatch);
 })();
 
 serviceWorker.register();

@@ -1,19 +1,25 @@
 import copy from "copy-text-to-clipboard";
-import { TOTP } from "jsotp";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect } from "react-redux";
-import { allActions } from "../store/actions";
+import { startInterval, stopInterval, getCurrentOtps } from "../util";
 import RemovePrompt from "./RemovePrompt";
 
 const AccountList = ({ accounts }) => {
   const [accountToBeRemoved, setAccountToBeRemoved] = useState();
+  const [otps, setOtps] = useState(getCurrentOtps(accounts));
+
+  useEffect(() => {
+    startInterval(() => {
+      setOtps(getCurrentOtps(accounts));
+    });
+    return stopInterval;
+  }, []);
 
   return (
     <>
       <main>
         {accounts.map((account) => {
-          const currentOTP = TOTP(account.secret).now();
-          const copyOTP = () => copy(currentOTP);
+          const currentOTP = otps[account.id];
 
           return (
             <section className="box" key={account.id}>
@@ -27,8 +33,7 @@ const AccountList = ({ accounts }) => {
                   </span>
                   <button
                     className="level-item button is-small is-bordered"
-                    onClick={copyOTP}
-                  >
+                    onClick={() => copy(currentOTP)}>
                     Copy
                   </button>
                   <span
@@ -51,10 +56,8 @@ const AccountList = ({ accounts }) => {
   );
 };
 
-const select = ({ accounts, time, ui }) => ({
+const select = ({ accounts }) => ({
   accounts,
-  // Not directly used, but forces component to reload when OTP needs to be changed
-  currentInterval: time.currentInterval,
 });
 
 export default connect(select, null)(AccountList);

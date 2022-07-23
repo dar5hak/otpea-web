@@ -3,13 +3,11 @@ import { createLogger } from "redux-logger";
 import { loadState } from "../util";
 import { accounts } from "./accounts.reducer";
 import { persist } from "./persist.middleware";
-import { time } from "./time.reducer";
 
 let store;
 
 const reducer = combineReducers({
   accounts,
-  time,
 });
 
 const middlewareList = [persist];
