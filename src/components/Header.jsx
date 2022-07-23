@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import { connect } from "react-redux";
-import { allActions } from "../store/actions";
 import AccountForm from "./AccountForm";
 
 const Header = () => {
