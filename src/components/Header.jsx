@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import AccountForm from "./AccountForm";
 
-const Header = () => {
+const Header = ({ onConfirmAdd }) => {
   const [addingAccount, setAddingAccount] = useState(false);
 
   return (
@@ -23,6 +23,7 @@ const Header = () => {
       </header>
       <AccountForm
         isVisible={addingAccount}
+        onConfirmAdd={onConfirmAdd}
         onClose={() => {
           setAddingAccount(false);
         }}

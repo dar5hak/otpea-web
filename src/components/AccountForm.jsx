@@ -1,6 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
-import { allActions } from "../store/actions";
 
 const BASE32_REGEX = "[A-Za-z2-7]+";
 
@@ -14,7 +12,7 @@ class AccountForm extends React.Component {
   }
 
   render() {
-    const { isVisible, addAccount, onClose } = this.props;
+    const { isVisible, onConfirmAdd, onClose } = this.props;
 
     return (
       <div className={isVisible ? "modal is-active" : "modal"}>
@@ -25,7 +23,7 @@ class AccountForm extends React.Component {
               autoComplete="off"
               onSubmit={(event) => {
                 event.preventDefault();
-                addAccount({
+                onConfirmAdd({
                   name: this.accountName.value,
                   secret: this.secret.value,
                 });
@@ -101,6 +99,4 @@ class AccountForm extends React.Component {
   }
 }
 
-const { addAccount } = allActions;
-
-export default connect(null, { addAccount })(AccountForm);
+export default AccountForm;

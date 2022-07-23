@@ -1,19 +1,22 @@
 import copy from "copy-text-to-clipboard";
 import React, { useEffect, useState } from "react";
-import { connect } from "react-redux";
 import { startInterval, stopInterval, getCurrentOtps } from "../util";
 import RemovePrompt from "./RemovePrompt";
 
-const AccountList = ({ accounts }) => {
+const AccountList = ({ accounts, onConfirmRemove }) => {
   const [accountToBeRemoved, setAccountToBeRemoved] = useState();
   const [otps, setOtps] = useState(getCurrentOtps(accounts));
 
+  function reloadOtps() {
+    setOtps(getCurrentOtps(accounts));
+  }
+
   useEffect(() => {
-    startInterval(() => {
-      setOtps(getCurrentOtps(accounts));
-    });
+    startInterval(reloadOtps);
     return stopInterval;
   }, []);
+
+  useEffect(reloadOtps, [accounts, reloadOtps]);
 
   return (
     <>
@@ -33,7 +36,8 @@ const AccountList = ({ accounts }) => {
                   </span>
                   <button
                     className="level-item button is-small is-bordered"
-                    onClick={() => copy(currentOTP)}>
+                    onClick={() => copy(currentOTP)}
+                  >
                     Copy
                   </button>
                   <span
@@ -48,6 +52,7 @@ const AccountList = ({ accounts }) => {
       </main>
       <RemovePrompt
         accountToBeRemoved={accountToBeRemoved}
+        onConfirmRemove={onConfirmRemove}
         onClose={() => {
           setAccountToBeRemoved(null);
         }}
@@ -56,8 +61,4 @@ const AccountList = ({ accounts }) => {
   );
 };
 
-const select = ({ accounts }) => ({
-  accounts,
-});
-
-export default connect(select, null)(AccountList);
+export default AccountList;

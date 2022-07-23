@@ -1,21 +1,24 @@
 import React from "react";
-import { connect } from "react-redux";
 import AccountList from "./AccountList";
 import Empty from "./Empty";
 import Header from "./Header";
-import RemovePrompt from "./RemovePrompt";
+import useAccounts from "./useAccounts";
 
-const App = ({ hasAccounts }) => (
-  <section className="all section is-clipped">
-    <div>
-      <Header />
-      {hasAccounts ? <AccountList /> : <Empty />}
-    </div>
-  </section>
-);
+const App = () => {
+  const { accounts, addAccount, removeAccount } = useAccounts();
 
-const select = ({ accounts }) => ({
-  hasAccounts: Boolean(accounts.length),
-});
+  return (
+    <section className="all section is-clipped">
+      <div>
+        <Header onConfirmAdd={addAccount} />
+        {accounts.length ? (
+          <AccountList accounts={accounts} onConfirmRemove={removeAccount} />
+        ) : (
+          <Empty />
+        )}
+      </div>
+    </section>
+  );
+};
 
-export default connect(select, null)(App);
+export default App;

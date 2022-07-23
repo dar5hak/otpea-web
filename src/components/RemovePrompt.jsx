@@ -1,8 +1,6 @@
 import React from "react";
-import { connect } from "react-redux";
-import { allActions } from "../store/actions";
 
-const RemovePrompt = ({ removeAccount, accountToBeRemoved, onClose }) => (
+const RemovePrompt = ({ accountToBeRemoved, onConfirmRemove, onClose }) => (
   <div className={accountToBeRemoved ? "modal is-active" : "modal"}>
     <div className="modal-background" onClick={onClose} />
     <div className="modal-content">
@@ -18,7 +16,8 @@ const RemovePrompt = ({ removeAccount, accountToBeRemoved, onClose }) => (
             <button
               className="level-item button is-danger"
               onClick={() => {
-                removeAccount(accountToBeRemoved);
+                console.log("Removing account", accountToBeRemoved);
+                onConfirmRemove(accountToBeRemoved);
                 onClose();
               }}
             >
@@ -36,6 +35,4 @@ const RemovePrompt = ({ removeAccount, accountToBeRemoved, onClose }) => (
   </div>
 );
 
-const { removeAccount } = allActions;
-
-export default connect(null, { removeAccount })(RemovePrompt);
+export default RemovePrompt;
