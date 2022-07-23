@@ -16,10 +16,6 @@
     "jsotp": "^1.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^8.0.2",
-    "redux": "^4.2.0",
-    "redux-logger": "^3.0.6",
-    "ric-shim": "^1.0.0",
     "zip-array": "^1.0.1"
   },
   "devDependencies": {
