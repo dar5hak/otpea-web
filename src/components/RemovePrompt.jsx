@@ -1,4 +1,4 @@
-import React from "react";
+import { h } from "preact";
 
 const RemovePrompt = ({ accountToBeRemoved, onConfirmRemove, onClose }) => (
   <div className={accountToBeRemoved ? "modal is-active" : "modal"}>

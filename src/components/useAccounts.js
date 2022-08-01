@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "preact/hooks";
 import { loadState, saveState } from "../util";
 
 export default function useAccount() {

@@ -1,4 +1,4 @@
-import React from "react";
+import { h } from "preact";
 import AccountList from "./AccountList";
 import Empty from "./Empty";
 import Header from "./Header";

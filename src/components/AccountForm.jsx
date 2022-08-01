@@ -1,8 +1,8 @@
-import React from "react";
+import { h, Component } from "preact";
 
 const BASE32_REGEX = "[A-Za-z2-7]+";
 
-class AccountForm extends React.Component {
+class AccountForm extends Component {
   componentDidUpdate() {
     if (this.props.isVisible) {
       // Clear any previous inputs

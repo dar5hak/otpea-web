@@ -1,5 +1,6 @@
 import copy from "copy-text-to-clipboard";
-import React, { useEffect, useState } from "react";
+import { h } from "preact";
+import { useEffect, useState } from "preact/hooks";
 import { startInterval, stopInterval, getCurrentOtps } from "../util";
 import RemovePrompt from "./RemovePrompt";
 
