@@ -1,4 +1,4 @@
-import React from "react";
+import { h } from "preact";
 
 const Empty = () => (
   <section className="section has-text-centered">
@@ -10,7 +10,8 @@ const Empty = () => (
       <a
         href="https://twofactorauth.org/"
         target="_blank"
-        rel="noopener noreferrer">
+        rel="noopener noreferrer"
+      >
         and many more
       </a>
       .

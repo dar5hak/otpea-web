@@ -1,10 +1,8 @@
-import React from "react";
-import { connect } from "react-redux";
-import { allActions } from "../store/actions";
+import { h, Component } from "preact";
 
 const BASE32_REGEX = "[A-Za-z2-7]+";
 
-class AccountForm extends React.Component {
+class AccountForm extends Component {
   componentDidUpdate() {
     if (this.props.isVisible) {
       // Clear any previous inputs
@@ -14,22 +12,24 @@ class AccountForm extends React.Component {
   }
 
   render() {
-    const { isVisible, addAccount, cancelAddAccount } = this.props;
+    const { isVisible, onConfirmAdd, onClose } = this.props;
 
     return (
       <div className={isVisible ? "modal is-active" : "modal"}>
-        <div className="modal-background" onClick={cancelAddAccount} />
+        <div className="modal-background" onClick={onClose} />
         <div className="modal-content">
           <div className="box">
             <form
               autoComplete="off"
-              onSubmit={event => {
+              onSubmit={(event) => {
                 event.preventDefault();
-                addAccount({
+                onConfirmAdd({
                   name: this.accountName.value,
-                  secret: this.secret.value
+                  secret: this.secret.value,
                 });
-              }}>
+                onClose();
+              }}
+            >
               <div className="field is-horizontal">
                 <div className="field-label is-normal">
                   <label className="label">Name</label>
@@ -43,7 +43,7 @@ class AccountForm extends React.Component {
                         name="accountName"
                         placeholder="GitHub"
                         required
-                        ref={el => (this.accountName = el)}
+                        ref={(el) => (this.accountName = el)}
                       />
                     </div>
                   </div>
@@ -63,7 +63,7 @@ class AccountForm extends React.Component {
                         pattern={BASE32_REGEX}
                         placeholder="n34h8yv2n80cxkv1"
                         required
-                        ref={el => (this.secret = el)}
+                        ref={(el) => (this.secret = el)}
                       />
                     </div>
                   </div>
@@ -75,7 +75,7 @@ class AccountForm extends React.Component {
                     type="button"
                     className="button"
                     value="Cancel"
-                    onClick={cancelAddAccount}
+                    onClick={onClose}
                   />
                 </p>
                 <p className="control">
@@ -92,16 +92,11 @@ class AccountForm extends React.Component {
         <button
           className="modal-close is-large"
           aria-label="close"
-          onClick={cancelAddAccount}
+          onClick={onClose}
         />
       </div>
     );
   }
 }
 
-const { addAccount, cancelAddAccount } = allActions;
-
-export default connect(
-  null,
-  { addAccount, cancelAddAccount }
-)(AccountForm);
+export default AccountForm;
