@@ -14,7 +14,7 @@
     "copy-text-to-clipboard": "^3.2.0",
     "idb-keyval": "^6.2.1",
     "jsotp": "^1.0.4",
-    "preact": "^10.10.3",
+    "preact": "^10.10.4",
     "zip-array": "^1.0.1"
   },
   "devDependencies": {
